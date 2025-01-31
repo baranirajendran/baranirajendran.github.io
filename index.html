@@ -36,5 +36,16 @@
         <p>This is a simple website with a clean layout.</p>
     </div>
     
+    <script>
+        window.addEventListener("CookieConsentInitialization", function() {
+            console.log("CookieConsent initialized!");
+            if (window.CookieConsent) {
+                window.CookieConsent.show();
+            } else {
+                console.error("CookieConsent is undefined.");
+            }
+        });
+    </script>
+
 </body>
 </html>
