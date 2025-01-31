@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Website</title>
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="59be740c-7927-4ae7-b64b-2efcbee43686" data-blockingmode="auto" type="text/javascript"></script>
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="59be740c-7927-4ae7-b64b-2efcbee43686" data-blockingmode="auto" type="text/javascript" async></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,5 +35,10 @@
         <h2>Welcome!</h2>
         <p>This is a simple website with a clean layout.</p>
     </div>
+    <script>
+        window.addEventListener("load", function () {
+            Cookiebot.renew();
+        });
+      </script>
 </body>
 </html>
