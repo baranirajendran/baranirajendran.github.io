@@ -4,8 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Website</title>
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="e25f69f1-6e0d-4518-ae07-55288272494d" data-blockingmode="auto" type="text/javascript"></script>
-    <style>
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" 
+        data-cbid="e25f69f1-6e0d-4518-ae07-55288272494d" 
+        data-blockingmode="auto" type="text/javascript">
+    </script>
+
+    <script>
+        window.addEventListener('CookieConsentInitialization', function() {
+            // Set region manually (forcing banner for US users)
+            if (window.CookieConsent) {
+                CookieConsent.setOutOfRegion('US-37', 1);
+                CookieConsent.renew();
+            } else {
+                console.error("CookieConsent is undefined");
+            }
+        });
+
+        // Force banner to show after Cookiebot script loads
+        window.addEventListener('load', function() {
+            if (window.CookieConsent) {
+                CookieConsent.renew();
+            } else {
+                console.error("CookieConsent is undefined on load");
+            }
+        });
+    </script>
+
+   <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -35,17 +60,6 @@
         <h2>Welcome!</h2>
         <p>This is a simple website with a clean layout.</p>
     </div>
-    
-    <script>
-        window.addEventListener("CookieConsentInitialization", function() {
-            console.log("CookieConsent initialized!");
-            if (window.CookieConsent) {
-                window.CookieConsent.show();
-            } else {
-                console.error("CookieConsent is undefined.");
-            }
-        });
-    </script>
 
 </body>
 </html>
