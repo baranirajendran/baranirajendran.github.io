@@ -31,13 +31,12 @@
     </script> -->
 
     <script>
-        window.addEventListener('CookieConsentInitialization', function() {
+        window.addEventListener('CookieConsentDeclaration', function() {
             if (window.Cookiebot) {
-                // Set region manually if needed
-                Cookiebot.setOutOfRegion('US-37', 1);
-    
-                // Check consent before renewing
-                if (!Cookiebot.consents.given) {
+                console.log('Consent Data:', Cookiebot);
+                
+                // Ensure consents object exists
+                if (Cookiebot.consents && !Cookiebot.consents.given) {
                     Cookiebot.renew();
                 }
             } else {
@@ -47,7 +46,8 @@
     
         window.addEventListener('load', function() {
             if (window.Cookiebot) {
-                if (!Cookiebot.consents.given) {
+                // Double-check consent after full page load
+                if (Cookiebot.consents && !Cookiebot.consents.given) {
                     Cookiebot.renew();
                 }
             } else {
@@ -55,6 +55,7 @@
             }
         });
     </script>
+    
     
    <style>
         body {
