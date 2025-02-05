@@ -32,6 +32,8 @@
 
     <script>
         window.addEventListener('CookieConsentDeclaration', function() {
+            console.log('Cookiebot:', Cookiebot);
+            console.log('Consent Given:', Cookiebot.consents ? Cookiebot.consents.given : 'No consent data yet');
             if (window.Cookiebot) {
                 console.log('Consent Data:', Cookiebot);
                 
