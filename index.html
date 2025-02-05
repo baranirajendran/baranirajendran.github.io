@@ -9,7 +9,7 @@
         data-blockingmode="auto" type="text/javascript">
     </script>
 
-    <script>
+    <!-- <script>
         window.addEventListener('CookieConsentInitialization', function() {
             // Set region manually (forcing banner for US users)
             if (window.CookieConsent) {
@@ -28,8 +28,34 @@
                 console.error("CookieConsent is undefined on load");
             }
         });
-    </script>
+    </script> -->
 
+    <script>
+        window.addEventListener('CookieConsentInitialization', function() {
+            if (window.Cookiebot) {
+                // Set region manually if needed
+                Cookiebot.setOutOfRegion('US-37', 1);
+    
+                // Check consent before renewing
+                if (!Cookiebot.consents.given) {
+                    Cookiebot.renew();
+                }
+            } else {
+                console.error("Cookiebot is undefined");
+            }
+        });
+    
+        window.addEventListener('load', function() {
+            if (window.Cookiebot) {
+                if (!Cookiebot.consents.given) {
+                    Cookiebot.renew();
+                }
+            } else {
+                console.error("Cookiebot is undefined on load");
+            }
+        });
+    </script>
+    
    <style>
         body {
             font-family: Arial, sans-serif;
